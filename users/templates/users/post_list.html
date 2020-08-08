@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body %}
+    {% include 'globals/messages.html' %}
+    {% for posts in object_list %}
+        <article class="media content-section">
+            <div class="media-body">
+                <div class="article-metadata">
+                    <a class="mr-2" href="{% url 'profile' pk=posts.author_id %}">{{ posts.author }}</a>
+                    <small class="text-muted">{{ posts.last_edit_date }}
+                    {% if user == posts.author %}
+                        <a href="{% url 'edit_post' pk=posts.id %}">edit</a> |
+                        <a href="{% url 'delete_post' pk=posts.id %}">delete</a>
+                    {% endif %}
+                    </small>
+                </div>
+                <p class="article-content">{{ posts.content }}</p>
+            </div>
+        </article>
+    {% endfor %}
+{% endblock %}

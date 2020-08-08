@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block body %}
+    <div class="content-section">
+        <fieldset class="form-group">
+            <h3>Are you sure you want to delete this post?</h3>
+        </fieldset>
+    </div>
+    {% include 'globals/messages.html' %}
+    {% include 'globals/form.html' %}
+{% endblock %}
+
+
+{#    <form method="post">{% csrf_token %}#}
+{#        <p>Are you sure you want to delete this post?</p>#}
+{#        <input type="submit" value="Confirm">#}
+{#    </form>#}

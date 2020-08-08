@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body %}
+    <h1>{{ user.username }}</h1>
+    <h5>{{ user.email }}</h5>
+    {% for post in user.posts.iterator %}
+        <article class="media content-section">
+            <div class="media-body">
+                <div class="article-metadata">
+                    <a class="mr-2" href="#">{{ user.username }}</a>
+                    <small class="text-muted">{{ post.last_edit_date }}
+                        <a href="#">edit</a> |
+                        <a href="#">delete</a>
+                    </small>
+                </div>
+                <p class="article-content">{{ post.content }}</p>
+            </div>
+        </article>
+    {% endfor %}
+{% endblock %}
