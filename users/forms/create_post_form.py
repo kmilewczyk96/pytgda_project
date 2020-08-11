@@ -1,6 +1,4 @@
 from django import forms
-from django.utils import timezone
-
 from users.forms.horizontalformhelper import HorizontalFormHelper
 from users.models import Posts
 
@@ -22,5 +20,5 @@ class CreatePostForm(forms.ModelForm):
         self.helper = HorizontalFormHelper()
         super(CreatePostForm, self).__init__(*args, **kwargs)
 
-        self.helper.add_submit("Add")
+        self.helper.add_submit("Submit")
         self.helper.add_cancel("Cancel")
