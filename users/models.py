@@ -28,10 +28,19 @@ class User(AbstractUser):
         return super(User, self).save(*args, **kwargs)
 
 
+class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    image = models.ImageField(default='default.jpg', upload_to='profile_pics')
+
+    def __str__(self):
+        return f'{self.user.username} profile'
+
+
 class Posts(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4)
     content = models.TextField()
-    last_edit_date = models.DateTimeField(default=timezone.now)
+    creation_date = models.DateTimeField(auto_now_add=True)
+    last_edit_date = models.DateTimeField(auto_now=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE, default=uuid.uuid4, related_name="posts")
 
     def __str__(self):

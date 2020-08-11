@@ -7,6 +7,8 @@ from django.urls import reverse, reverse_lazy
 from django.utils import timezone
 from django.views import View
 from django.views.generic import CreateView, ListView, UpdateView, DeleteView, DetailView
+
+from users import models
 from users.forms.change_password_form import PasswordForm
 from users.forms.create_post_form import CreatePostForm
 from users.forms.loginform import LoginForm
