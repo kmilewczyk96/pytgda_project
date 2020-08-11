@@ -4,11 +4,8 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth import get_user_model
 from django.shortcuts import render, redirect
 from django.urls import reverse, reverse_lazy
-from django.utils import timezone
 from django.views import View
 from django.views.generic import CreateView, ListView, UpdateView, DeleteView, DetailView
-
-from users import models
 from users.forms.change_password_form import PasswordForm
 from users.forms.create_post_form import CreatePostForm
 from users.forms.loginform import LoginForm
@@ -126,23 +123,6 @@ class UserProfileView(LoginRequiredMixin, DetailView):
     def get_context_data(self, **kwargs):
         context = super(UserProfileView, self).get_context_data(**kwargs)
         return context
-
-# class SearchUserView(LoginRequiredMixin, View):
-#     login_url = 'login'
-#     template_name = 'profile_detail.html'
-#
-#     def post(self, request):
-#         search_param: str = request.POST.get('search_param')
-#
-#         if not search_param:
-#             messages.error(request, 'Invalid value')
-#             return redirect(reverse('post_list'))
-#
-#         post_list = Posts.objects.filter(
-#             search_param == 'username' + 'personal_token'
-#         )
-#
-#         return render(request, self.template_name, {"object_list": post_list})
 
 
 def logout_view(request):

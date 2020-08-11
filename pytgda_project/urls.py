@@ -32,6 +32,7 @@ urlpatterns = [
     path('change_password', ChangePasswordView.as_view(), name='change_password'),
     path('create_post', CreatePostView.as_view(), name='create_post'),
     path('user/<pk>', UserProfileView.as_view(), name='profile'),
+    # path('profile/<pk>', ProfileUpdateView.as_view(), name='profile_edit'),
 ]
 
 
